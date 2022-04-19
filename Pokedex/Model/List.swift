@@ -11,38 +11,39 @@ struct List: Codable {
     let count: Int
     let next: String
     let previous: String?
-    let results: [Result]
+    var results: [PokemonResultList]
 }
 
-struct Result: Codable {
+struct PokemonResultList: Codable {
     let name: String
     let url: String
+    var imageUrl: String?
 }
 
 extension List {
     
     static let dummyData: List = {
         List(count: 1126, next: "1126", previous: nil, results: [
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/"),
-            Result(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/")
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"),
+            PokemonResultList(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/", imageUrl: "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png")
             
         ])
     }()    

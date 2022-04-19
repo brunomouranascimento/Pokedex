@@ -14,6 +14,7 @@
 		DB6C39CF280F2F2700982CBE /* PokemonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C39CE280F2F2700982CBE /* PokemonService.swift */; };
 		DB6C39D5280F2FC300982CBE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C39D4280F2FC300982CBE /* HomeView.swift */; };
 		DB6C39D7280F2FF200982CBE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */; };
+		DB94E556280F4D69009718B7 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB94E555280F4D69009718B7 /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		DB6C39CE280F2F2700982CBE /* PokemonService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonService.swift; sourceTree = "<group>"; };
 		DB6C39D4280F2FC300982CBE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		DB94E555280F4D69009718B7 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		DB6C39BB280F2D7700982CBE /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				DB94E554280F4D4C009718B7 /* Constants */,
 				DB6C39CA280F2EC300982CBE /* Model */,
 				DB6C39D1280F2F6A00982CBE /* View */,
 				DB6C39CD280F2F0D00982CBE /* Services */,
@@ -114,6 +117,14 @@
 				DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		DB94E554280F4D4C009718B7 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DB94E555280F4D69009718B7 /* APIConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 			files = (
 				DB6C39D7280F2FF200982CBE /* HomeViewModel.swift in Sources */,
 				DB6C39CF280F2F2700982CBE /* PokemonService.swift in Sources */,
+				DB94E556280F4D69009718B7 /* APIConstants.swift in Sources */,
 				DB6C39BD280F2D7700982CBE /* PokedexApp.swift in Sources */,
 				DB6C39D5280F2FC300982CBE /* HomeView.swift in Sources */,
 				DB6C39CC280F2EF300982CBE /* List.swift in Sources */,

@@ -8,6 +8,19 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    init() {
+        let appearance = UITabBarAppearance()
+        appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        //            appearance.backgroundColor = UIColor(Color.red.opacity(0.2))
+        
+        // Use this appearance when scrolling behind the TabView:
+        UITabBar.appearance().standardAppearance = appearance
+        // Use this appearance when scrolled all the way up:
+        UITabBar.appearance().scrollEdgeAppearance = appearance
+    }
+    
+
     var body: some View {
         TabView {
             ListView()
@@ -22,39 +35,41 @@ struct HomeView: View {
                     Text("Buscar")
                 }
         }
-        .onAppear {
-            let appearance = UITabBarAppearance()
-            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            //            appearance.backgroundColor = UIColor(Color.red.opacity(0.2))
-            
-            // Use this appearance when scrolling behind the TabView:
-            UITabBar.appearance().standardAppearance = appearance
-            // Use this appearance when scrolled all the way up:
-            UITabBar.appearance().scrollEdgeAppearance = appearance
-        }
     }
 }
 
 struct ListView: View {
+    
+    @StateObject private var viewModel = HomeViewModel(
+        service: PokemonService()
+    )
+    
     var body: some View {
         VStack(spacing: 0) {
+            Text("Total de Pokémons: \(viewModel.list.count)")
             ScrollView {
-                ForEach(List.dummyData.results, id: \.name) { item in
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.orange)
-                            .frame(height: 44)
-                            .padding()
-                        HStack {
-                            Text(item.name)
-                                .font(.footnote)
-                            Text(item.url)
-                                .font(.footnote)
+                if let list = viewModel.list {
+                    ForEach(list.results , id: \.name) { item in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.orange)
+                                .frame(height: 44)
+                                .padding()
+                            HStack {
+                                Text(item.name)
+                                    .font(.footnote)
+                                Text(item.url)
+                                    .font(.footnote)
+                            }
                         }
                     }
                 }
             }
+            .task {
+                await viewModel.getPokemonList()
+            }
         }
+
     }
 }
 struct SearchView: View {

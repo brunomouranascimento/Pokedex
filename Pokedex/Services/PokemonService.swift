@@ -6,3 +6,18 @@
 //
 
 import Foundation
+
+protocol PokemonServiceProtocol {
+    func getPokemonList() async throws -> List
+}
+
+final class PokemonService: PokemonServiceProtocol {
+    
+    func getPokemonList() async throws -> List {
+        let urlSession = URLSession.shared
+        let url = URL(string: APIConstants.baseUrl.appending("/pokemon"))
+        let (data, _) = try await urlSession.data(from: url!)
+        return try JSONDecoder().decode(List.self, from: data)
+    }
+    
+}
