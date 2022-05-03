@@ -15,6 +15,9 @@
 		DB6C39D5280F2FC300982CBE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C39D4280F2FC300982CBE /* HomeView.swift */; };
 		DB6C39D7280F2FF200982CBE /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */; };
 		DB94E556280F4D69009718B7 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB94E555280F4D69009718B7 /* APIConstants.swift */; };
+		DBCD82892810328E005C2B52 /* ResponseLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCD82882810328E005C2B52 /* ResponseLoadingView.swift */; };
+		DBCD828C2810347E005C2B52 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = DBCD828B2810347E005C2B52 /* Shimmer */; };
+		DBCD828E281082DB005C2B52 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBCD828D281082DB005C2B52 /* Pokemon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,8 @@
 		DB6C39D4280F2FC300982CBE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		DB94E555280F4D69009718B7 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		DBCD82882810328E005C2B52 /* ResponseLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseLoadingView.swift; sourceTree = "<group>"; };
+		DBCD828D281082DB005C2B52 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBCD828C2810347E005C2B52 /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6C39CB280F2EF300982CBE /* List.swift */,
+				DBCD828D281082DB005C2B52 /* Pokemon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 			children = (
 				DB6C39D4280F2FC300982CBE /* HomeView.swift */,
 				DB6C39D6280F2FF200982CBE /* HomeViewModel.swift */,
+				DBCD82882810328E005C2B52 /* ResponseLoadingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -143,6 +151,9 @@
 			dependencies = (
 			);
 			name = Pokedex;
+			packageProductDependencies = (
+				DBCD828B2810347E005C2B52 /* Shimmer */,
+			);
 			productName = Pokedex;
 			productReference = DB6C39B9280F2D7700982CBE /* Pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +182,9 @@
 				Base,
 			);
 			mainGroup = DB6C39B0280F2D7700982CBE;
+			packageReferences = (
+				DBCD828A2810347E005C2B52 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+			);
 			productRefGroup = DB6C39BA280F2D7700982CBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -198,9 +212,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB6C39D7280F2FF200982CBE /* HomeViewModel.swift in Sources */,
+				DBCD828E281082DB005C2B52 /* Pokemon.swift in Sources */,
 				DB6C39CF280F2F2700982CBE /* PokemonService.swift in Sources */,
 				DB94E556280F4D69009718B7 /* APIConstants.swift in Sources */,
 				DB6C39BD280F2D7700982CBE /* PokedexApp.swift in Sources */,
+				DBCD82892810328E005C2B52 /* ResponseLoadingView.swift in Sources */,
 				DB6C39D5280F2FC300982CBE /* HomeView.swift in Sources */,
 				DB6C39CC280F2EF300982CBE /* List.swift in Sources */,
 			);
@@ -403,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DBCD828A2810347E005C2B52 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBCD828B2810347E005C2B52 /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBCD828A2810347E005C2B52 /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DB6C39B1280F2D7700982CBE /* Project object */;
 }

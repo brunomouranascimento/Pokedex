@@ -9,13 +9,17 @@ import Foundation
 
 
 protocol HomeViewModelProtocol: ObservableObject {
-    func getPokemonList() async
+    func getPokemonList(firstIndex: Int, lastIndex: Int) async
 }
 
 @MainActor
 final class HomeViewModel: HomeViewModelProtocol {
     
-    @Published private(set) var list: List = List.dummyData
+    
+//    @Published private(set) var list: List = List(count: 0, next: "", previous: "", results: [])
+    @Published private(set) var pokemonList: [Pokemon] = []
+    //    @Published private(set) var list: List = List.dummyData
+    
     
     private let service: PokemonService
     
@@ -23,16 +27,32 @@ final class HomeViewModel: HomeViewModelProtocol {
         self.service = service
     }
     
-    func getPokemonList() async {
+    
+    
+    func getPokemonList(firstIndex: Int, lastIndex: Int) async {
+        
         do {
-            self.list = try await service.getPokemonList()
-                
-            self.list.results.indices.forEach {
-                list.results[$0].imageUrl = "https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/other/home/1.png"
+            let firstPokemons = Array(firstIndex...lastIndex)
+            
+            for number in firstPokemons {
+                var pokemon = try await service.getPokemon(pokemonNumber: number)
+                pokemon.imageUrl = pokemon.sprites.other.home.front_default
+                pokemon.name = pokemon.name.capitalizingFirstLetter()
+                pokemonList.append(pokemon)
             }
             
         } catch {
             print(error)
         }
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }

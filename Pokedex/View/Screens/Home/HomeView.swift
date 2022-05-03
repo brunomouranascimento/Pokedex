@@ -20,7 +20,7 @@ struct HomeView: View {
         UITabBar.appearance().scrollEdgeAppearance = appearance
     }
     
-
+    
     var body: some View {
         TabView {
             ListView()
@@ -40,36 +40,58 @@ struct HomeView: View {
 
 struct ListView: View {
     
-    @StateObject private var viewModel = HomeViewModel(
-        service: PokemonService()
-    )
+    @StateObject private var viewModel: HomeViewModel
+    
+    init() {
+        self._viewModel = StateObject(wrappedValue: HomeViewModel(service: PokemonService()))
+    }
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("Total de Pokémons: \(viewModel.list.count)")
+            //            Text("Total de Pokémons: \(viewModel.list.count)")
             ScrollView {
-                if let list = viewModel.list {
-                    ForEach(list.results , id: \.name) { item in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.orange)
-                                .frame(height: 44)
-                                .padding()
-                            HStack {
-                                Text(item.name)
-                                    .font(.footnote)
-                                Text(item.url)
-                                    .font(.footnote)
+                LazyVStack {
+//                    if viewModel.pokemonList.count == 200 {
+                        ForEach(viewModel.pokemonList, id: \.id) { item in
+                            ZStack {
+                                Color.orange
+                                HStack {
+                                    AsyncImage(url: URL(string: String(item.imageUrl ?? "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png"))){ image in
+                                        image
+                                            .resizable()
+                                            .scaledToFill()
+                                    } placeholder: {
+                                        Image(systemName: "camera")
+                                    }
+                                    .frame(width: 100, height: 100)
+                                    .padding(.leading, 1)
+                                    //                                .padding(.bottom, 25)
+                                    .cornerRadius(20)
+                                    Spacer()
+                                    Text(item.name)
+                                        .font(.title2)
+                                        .lineLimit(1)
+                                }
+                                .frame(width: 300)
                             }
+                            .task {
+                                if item.id % 100 == 0 {
+                                    await viewModel.getPokemonList(firstIndex: item.id + 1, lastIndex: item.id + 100)
+                                }
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                            .frame(height: 130)
+                            .padding()
                         }
-                    }
+//                    } else {
+//                        ResponseLoadingView()
+//                    }
+                }
+                .task {
+                    await viewModel.getPokemonList(firstIndex: 1, lastIndex: 100)
                 }
             }
-            .task {
-                await viewModel.getPokemonList()
-            }
         }
-
     }
 }
 struct SearchView: View {
